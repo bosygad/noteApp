@@ -1,0 +1,58 @@
+
+<mat-form-field appearance="outline" class="w-100">
+    <mat-label>search...</mat-label>
+    <input matInput type="search" [(ngModel)]="searchValue" placeholder="Enter title">
+  </mat-form-field>
+
+<button mat-raised-button color="primary" (click)="openDialog()" class="d-block ms-auto" >Add note</button>
+
+<section>
+    <div
+        class="container"
+    >
+        <div
+            class="row my-5 g-3"
+        >
+            <div class="col-md-4" *ngFor="let item of notes  | search:searchValue">
+               
+                <mat-card class="example-card py-3 ">
+                    <button  mat-icon-button class="position-absolute end-0" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu" >
+                        <button mat-menu-item [swal]="deleteSwal">
+                          <mat-icon>delete</mat-icon>
+                          <span>Delete</span>
+                        </button>
+                        <swal
+                        #deleteSwal
+                        title="Delete {{ item.title }}?"
+                        text="This cannot be undone"
+                        icon="question"
+                        [showCancelButton]="true"
+                        [focusCancel]="true"
+                        (confirm)="DeleteNote(item)">
+                      </swal>
+                        <button mat-menu-item (click)="UpdateNote(item)">
+                          <mat-icon>update</mat-icon>
+                          <span>Update</span>
+                        </button>
+                      </mat-menu>
+                      
+                    <mat-card-header>
+                      <mat-card-title>{{item.title}}</mat-card-title>
+                   
+                    </mat-card-header>
+                    <mat-card-content>
+                     
+                      <p>{{item.content}}</p>
+                    </mat-card-content>
+               
+                  </mat-card>
+            </div>
+          
+        </div>
+        
+    </div>
+    
+</section>

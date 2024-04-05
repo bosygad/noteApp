@@ -1,0 +1,29 @@
+<section>
+ <div
+    class="container"
+ >
+    <div
+        class="row p-4 justify-content-center align-items-center"
+    >
+        <div class="col-md-10  w-100 m-4">
+            <form class="example-form w-100" [formGroup]="form" (ngSubmit)="sendData()">
+                <h3>Add note</h3>
+                <mat-form-field class="d-block w-100" appearance="outline">
+                  <mat-label>title</mat-label>
+                  <input matInput placeholder="title"  formControlName="title">
+                </mat-form-field>
+              
+                <mat-form-field class="d-block w-100" appearance="outline">
+                  <mat-label>content</mat-label>
+                  <textarea matInput placeholder="content..." formControlName="content"></textarea>
+                </mat-form-field>
+                <button mat-raised-button color="primary" class="d-block w-100" *ngIf="data == null">Add note</button>
+                <button mat-raised-button color="accent" class="d-block w-100" *ngIf="data != null">Update note</button>
+              </form>
+        </div>
+      
+    </div>
+    
+ </div>
+ 
+</section>

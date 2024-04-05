@@ -1,0 +1,68 @@
+<section class="min-vh-100 pt-5">
+    <div class="container">
+        <div class="row rounded g-3 shadow-lg d-flex justify-content-center align-items-center">
+            <div class="col-md-8 img rounded">
+
+            </div>
+            <div class="col-md-4">
+                <form class="example-form" [formGroup]="RegisterForm" (ngSubmit)="register()">
+                    <mat-form-field class="w-100 my-2" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text " formControlName="name" placeholder="enter your name" >
+      
+                        <mat-error *ngIf="(RegisterForm.get('name')?.hasError('minlength'))">min length 3 characters</mat-error>
+                        <mat-error *ngIf="(RegisterForm.get('name')?.hasError('maxlength'))">max length 10 characters</mat-error>
+                        
+                        <mat-error *ngIf="(RegisterForm.get('name')?.hasError('required'))">name is <strong>required</strong></mat-error> 
+                    
+                      </mat-form-field>
+                  
+                    <mat-form-field class="w-100 my-2" appearance="outline">
+                 
+                         <mat-label>Email</mat-label>
+                          <input matInput type="email" placeholder="Ex. pat@example.com" formControlName="email">
+                    <mat-error *ngIf="(RegisterForm.get('email')?.hasError('email'))">Please enter a valid email address</mat-error>        
+                      <mat-error *ngIf="(RegisterForm.get('email')?.hasError('required'))">Email is <strong>required</strong></mat-error> 
+                  
+                    </mat-form-field>
+                    <mat-form-field class="w-100 my-2" appearance="outline">
+                        
+                            <mat-label>password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" formControlName="password">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                
+                      <!-- <mat-error *ngIf="(RegisterForm.get('password')?.hasError('password'))">Please enter  password</mat-error> -->
+                        
+                        <mat-error *ngIf="(RegisterForm.get('password')?.hasError('required'))">password is <strong>required</strong></mat-error> 
+                    
+                      </mat-form-field>
+                      <mat-form-field class="w-100 my-2" appearance="outline">
+                        <mat-label>Age</mat-label>
+                        <input type="number" matInput  placeholder="enter your age" formControlName="age">
+      
+                      <!-- <mat-error *ngIf="(RegisterForm.get('age')?.hasError('min'))">Please enter your age </mat-error> -->
+                        
+                        <mat-error *ngIf="(RegisterForm.get('age')?.hasError('required'))">age is <strong>required</strong></mat-error> 
+                    
+                      </mat-form-field>
+                      <mat-form-field class="w-100 my-2" appearance="outline">
+                        <mat-label>Phone</mat-label>
+                        <input type="tel" matInput  placeholder="enter your phone" formControlName="phone">
+      
+                      <mat-error *ngIf="(RegisterForm.get('phone')?.hasError('phone'))">Please enter a valid phone number</mat-error>
+                        
+                        <mat-error *ngIf="(RegisterForm.get('phone')?.hasError('required'))">phone is <strong>required</strong></mat-error> 
+                    
+                      </mat-form-field>
+                      <button [disabled]="!RegisterForm.valid" mat-flat-button color="primary">register</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
