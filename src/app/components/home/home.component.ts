@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NotesComponent } from '../notes/notes.component';
 import { NoteService } from 'src/app/shared/services/note.service';
 import { Notes } from 'src/app/shared/interfaces/notes';
+import { NotFoundError } from 'rxjs';
 
 
 
@@ -12,14 +13,15 @@ import { Notes } from 'src/app/shared/interfaces/notes';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  notes:any[] =[]
+  notes:Notes[] =[]
   searchValue:string=''
-  
+  NoteId:string =''
   constructor(public dialog: MatDialog ,private _NoteService:NoteService) {}
 ngOnInit(): void {
   this.getNotes()
   
 }
+
   openDialog() {
     const dialogRef = this.dialog.open(NotesComponent);
 
@@ -45,15 +47,28 @@ console.log(this.notes);
 
   DeleteNote(note : any){
     console.log(note);
-    
+
     this._NoteService.deleteNotes(note._id).subscribe({
       next:(response)=>{console.log(response);
         this.getNotes()
+       
+
       },
       error:(err)=>{console.log(err);
       }
     })
   }
+  // DeleteNote(){
+  //   // console.log(note);
+    
+  //   this._NoteService.deleteNotes(this.NoteId).subscribe({
+  //     next:(response)=>{console.log(response);
+  //       this.getNotes()
+  //     },
+  //     error:(err)=>{console.log(err);
+  //     }
+  //   })
+  // }
 
   UpdateNote(note:Notes){
     console.log("Update" , note);

@@ -13,7 +13,7 @@
         <div
             class="row my-5 g-3"
         >
-            <div class="col-md-4" *ngFor="let item of notes  | search:searchValue">
+            <div class="col-md-4" *ngFor="let item of notes | search:searchValue">
                
                 <mat-card class="example-card py-3 ">
                     <button  mat-icon-button class="position-absolute end-0" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
@@ -31,7 +31,8 @@
                         icon="question"
                         [showCancelButton]="true"
                         [focusCancel]="true"
-                        (confirm)="DeleteNote(item)">
+                        (confirm)="DeleteNote(item)"
+                        >
                       </swal>
                         <button mat-menu-item (click)="UpdateNote(item)">
                           <mat-icon>update</mat-icon>
@@ -40,12 +41,12 @@
                       </mat-menu>
                       
                     <mat-card-header>
-                      <mat-card-title>{{item.title}}</mat-card-title>
+                      <mat-card-title>{{item?.title}}</mat-card-title>
                    
                     </mat-card-header>
                     <mat-card-content>
                      
-                      <p>{{item.content}}</p>
+                      <p>{{item?.content}}</p>
                     </mat-card-content>
                
                   </mat-card>

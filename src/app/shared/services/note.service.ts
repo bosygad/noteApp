@@ -30,12 +30,12 @@ token:string ='';
     return this._HttpClient.get(`https://note-sigma-black.vercel.app/api/v1/notes`,options)
   }
 
-  deleteNotes(NoteId:any):Observable<any>{
+  deleteNotes(id:string):Observable<any>{
     const headers = new HttpHeaders({
       token:this.token
     })
     const options = {headers:headers}
-    return this._HttpClient.delete(`https://note-sigma-black.vercel.app/api/v1/notes/${NoteId}`,options)
+    return this._HttpClient.delete(`https://note-sigma-black.vercel.app/api/v1/notes/${id}`,options)
   }
 
   UpdateNotes(NoteId:any , form:any):Observable<any>{
