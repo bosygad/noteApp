@@ -7,7 +7,7 @@ import {  NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  menuName:string=""
+  menuName:string="login"
 constructor(private _Router:Router) {
   this._Router.events.subscribe({
     next:(result)=>{ 
