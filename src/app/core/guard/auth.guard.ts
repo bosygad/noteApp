@@ -9,7 +9,7 @@ if(auth.user.getValue() != null){
   return true;
 }
 else{
-  _router.navigate(['signin'])
+  _router.navigate(['login'])
   return false;
 }
 
