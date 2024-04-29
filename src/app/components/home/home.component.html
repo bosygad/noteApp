@@ -13,18 +13,19 @@
         <div
             class="row my-5 g-3"
         >
-            <div class="col-md-4" *ngFor="let item of notes | search:searchValue">
+            <div class="col-md-4" *ngFor="let item of Allnotes | search:searchValue ; let i = index">
                
                 <mat-card class="example-card py-3 ">
                     <button  mat-icon-button class="position-absolute end-0" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                         <mat-icon>more_vert</mat-icon>
                       </button>
                       <mat-menu #menu="matMenu" >
-                        <button mat-menu-item [swal]="deleteSwal">
+                        <button mat-menu-item (click)="deleteNote(item._id , i)">
                           <mat-icon>delete</mat-icon>
                           <span>Delete</span>
                         </button>
-                        <swal
+                      
+                        <!-- <swal
                         #deleteSwal
                         title="Delete {{ item.title }}?"
                         text="This cannot be undone"
@@ -33,7 +34,7 @@
                         [focusCancel]="true"
                         (confirm)="DeleteNote(item)"
                         >
-                      </swal>
+                      </swal> -->
                         <button mat-menu-item (click)="UpdateNote(item)">
                           <mat-icon>update</mat-icon>
                           <span>Update</span>

@@ -24,6 +24,8 @@
                             </button>
                     </mat-form-field>
                     <button [disabled]="!loginForm.valid" mat-flat-button color="primary">login</button>
+                    
+                    <p>you don't have account ? <a class="text-decoration-none" [routerLink]="['../register']">register</a></p>
                 </form>
             </div>
         </div>

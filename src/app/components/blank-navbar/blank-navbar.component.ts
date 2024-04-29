@@ -10,6 +10,7 @@ export class BlankNavbarComponent {
 constructor(private _Router:Router){}
 
 logOut(){
-  this._Router.navigate(['./login'])
+  localStorage.removeItem('userToken')
+  this._Router.navigate(['./register'])
 }
 }
