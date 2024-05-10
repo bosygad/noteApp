@@ -1,8 +1,9 @@
 .img{
     background-image: url(../../../assets/images/Signup-rafiki.svg);
-    background-size: cover;
-   height: 80vh;
-    width: 50%;
+    background-size: cover contain;
+   background-repeat: no-repeat;
+   height: 100vh;
+    // width: 100%;
   
 }
 a{
